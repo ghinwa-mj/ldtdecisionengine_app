@@ -9,7 +9,14 @@ from openai import OpenAI
 
 import json
 
-os.environ["OPENAI_API_KEY"] = apikey.openai_apikey
+gcs_credentials = st.secrets["connections"]["gcs"]
+openai_api_key = st.secrets["api_keys"]["openai"]
+
+# Set OpenAI API Key
+openai.api_key = openai_api_key
+
+# Initialize Google Cloud Storage client
+storage_client = storage.Client.from_service_account_info(gcs_credentials)
 
 # NOTE when running on Digital Ocean, we need to put the credentials somewhere and set the Env GOOGLE_APPLICATION_CREDENTIALS
 from google.cloud import storage
