@@ -8,10 +8,9 @@ from openai import OpenAI
 import openai
 
 from google.cloud import storage
-import json
 
-# Access secrets directly, since there is no "connections" section
-gcs_credentials = json.loads(st.secrets["gcs_service_account"])
+# Access secrets directly, no need for json.loads()
+gcs_credentials = st.secrets["gcs_service_account"]
 openai_api_key = st.secrets["api_keys"]["openai_apikey"]
 
 # Set OpenAI API Key
