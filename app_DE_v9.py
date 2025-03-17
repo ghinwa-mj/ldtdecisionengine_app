@@ -14,7 +14,7 @@ gcs_credentials = st.secrets["gcs_service_account"]
 openai_api_key = st.secrets["api_keys"]["openai_apikey"]
 
 # Set OpenAI API Key
-os.environ[“OPENAI_API_KEY”] = openai_api_key
+os.environ['OPENAI_API_KEY'] = openai_api_key
 
 # Initialize Google Cloud Storage client
 storage_client = storage.Client.from_service_account_info(gcs_credentials)
