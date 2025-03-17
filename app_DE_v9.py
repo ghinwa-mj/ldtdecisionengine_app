@@ -27,9 +27,6 @@ from io import BytesIO
 # Define bucket name
 BUCKET_NAME = "wb-ldt"
 
-# Initialize Google Cloud Storage client
-storage_client = storage.Client()
-
 def read_csv_from_gcs(bucket_name, file_name):
     """Reads a CSV file from GCS into a Pandas DataFrame."""
     bucket = storage_client.bucket(bucket_name)
