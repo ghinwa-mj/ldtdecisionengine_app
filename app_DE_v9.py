@@ -8,6 +8,8 @@ import pandas as pd
 from openai import OpenAI
 import openai
 
+from google.cloud import storage
+
 import json
 
 gcs_credentials = st.secrets["connections"]["gcs"]
