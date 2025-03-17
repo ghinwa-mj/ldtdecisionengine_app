@@ -63,20 +63,23 @@ def get_image_from_gcs(bucket_name, image_name):
     return image
 
 # Load the image
-image_path = get_image_from_gcs(BUCKET_NAME, "decision_engine/inputs/LDT Decision Engine Icon.png")
-im = Image.open(image_path)
-#image_path.show()  # Opens the image
+im = get_image_from_gcs(BUCKET_NAME, "decision_engine/inputs/LDT Decision Engine Icon.png")
 
 # Set Streamlit page config
 st.set_page_config(page_title="LDT Decision Engine", page_icon=im)
 
 # Convert image to base64 - To be able to add to page
-def get_base64(image_path):
-    with open(image_path, "rb") as image_file:
-        return base64.b64encode(image_file.read()).decode()
+def get_base64_from_image(image):
+    buffered = BytesIO()
+    image.save(buffered, format="PNG")
+    return base64.b64encode(buffered.getvalue()).decode()
+
+# Convert and embed the image
+icon_html = f'<img src="data:image/png;base64,{get_base64_from_image(im)}" width="30" style="vertical-align: middle; margin-right: 10px;">'
+
 
 # HTML for inline image in title
-icon_html = f'<img src="data:image/png;base64,{get_base64(image_path)}" width="30" style="vertical-align: middle; margin-right: 10px;">'
+icon_html = f'<img src="data:image/png;base64,{get_base64_from_image(im)}" width="30" style="vertical-align: middle; margin-right: 10px;">'
 # Display title with icon
 st.markdown(f"<h1 style='display: flex; align-items: center;'>{icon_html}LDT Decision Engine</h1>", unsafe_allow_html=True)
 # Subheader
@@ -448,4 +451,6 @@ if st.session_state.regional_analysis_completed == True:
 if st.session_state.get("project_recommendations"):
     #st.write(st.session_state.project_recommendations)
     copy_to_clipboard_button(st.session_state.project_recommendations)
+
+
 
