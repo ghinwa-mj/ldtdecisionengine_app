@@ -72,9 +72,6 @@ def get_base64_from_image(image):
 # Convert and embed the image
 icon_html = f'<img src="data:image/png;base64,{get_base64_from_image(im)}" width="30" style="vertical-align: middle; margin-right: 10px;">'
 
-
-# HTML for inline image in title
-icon_html = f'<img src="data:image/png;base64,{get_base64_from_image(im)}" width="30" style="vertical-align: middle; margin-right: 10px;">'
 # Display title with icon
 st.markdown(f"<h1 style='display: flex; align-items: center;'>{icon_html}LDT Decision Engine</h1>", unsafe_allow_html=True)
 # Subheader
