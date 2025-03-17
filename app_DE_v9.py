@@ -37,10 +37,14 @@ def read_csv_from_gcs(bucket_name, file_name):
     data = blob.download_as_bytes()
     return pd.read_csv(BytesIO(data))
 
-# Load CSVs from Google Cloud Storage
-df_indicators = read_csv_from_gcs(BUCKET_NAME, "decision_engine/inputs/indicators_full_df.csv")
-df_indicatorlist = read_csv_from_gcs(BUCKET_NAME, "decision_engine/inputs/Indicator List.csv")
-df_projects = read_csv_from_gcs(BUCKET_NAME, "decision_engine/inputs/wbif_project_examples.csv")
+# Load CSVs from Google Cloud Storage@st.cache_data
+def load_data():
+    df_indicators = read_csv_from_gcs(BUCKET_NAME, "decision_engine/inputs/indicators_full_df.csv")
+    df_indicatorlist = read_csv_from_gcs(BUCKET_NAME, "decision_engine/inputs/Indicator List.csv")
+    df_projects = read_csv_from_gcs(BUCKET_NAME, "decision_engine/inputs/wbif_project_examples.csv")
+    return df_indicators, df_indicatorlist, df_projects
+
+df_indicators, df_indicatorlist, df_projects = load_data()
 
 # Extract regions as before
 regions = df_indicators['NAME_2'].tolist()
