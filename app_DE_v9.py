@@ -12,7 +12,7 @@ from google.cloud import storage
 
 import json
 
-gcs_credentials = st.secrets["connections"]["gcs"]
+gcs_credentials = st.secrets["connections"]["gcs_service_account_info"]
 openai_api_key = st.secrets["api_keys"]["openai_apikey"]
 
 # Set OpenAI API Key
