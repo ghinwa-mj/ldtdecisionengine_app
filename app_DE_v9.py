@@ -1,7 +1,6 @@
 #### Tries function calling: Relevant Column is maybe not giving the right column names #### 
 #Import required libraries
-import os 
-
+import os
 import streamlit as st
 import pandas as pd
 
@@ -9,10 +8,10 @@ from openai import OpenAI
 import openai
 
 from google.cloud import storage
-
 import json
 
-gcs_credentials = st.secrets["connections"]["gcs_service_account_info"]
+# Access secrets directly, since there is no "connections" section
+gcs_credentials = json.loads(st.secrets["gcs_service_account"])
 openai_api_key = st.secrets["api_keys"]["openai_apikey"]
 
 # Set OpenAI API Key
