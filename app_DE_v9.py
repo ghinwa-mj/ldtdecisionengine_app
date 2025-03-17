@@ -42,16 +42,10 @@ def load_data():
 
 df_indicators, df_indicatorlist, df_projects = load_data()
 
-# Extract regions as before
-regions = df_indicators['NAME_2'].tolist()
-
 #Update Icon
 from PIL import Image
 # Loading Image using PIL
-import streamlit as st
 import base64
-
-from PIL import Image
 import requests
 
 def get_image_from_gcs(bucket_name, image_name):
