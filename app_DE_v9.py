@@ -37,7 +37,8 @@ def read_csv_from_gcs(bucket_name, file_name):
     data = blob.download_as_bytes()
     return pd.read_csv(BytesIO(data))
 
-# Load CSVs from Google Cloud Storage@st.cache_data
+# Load CSVs from Google Cloud Storage
+@st.cache_data
 def load_data():
     df_indicators = read_csv_from_gcs(BUCKET_NAME, "decision_engine/inputs/indicators_full_df.csv")
     df_indicatorlist = read_csv_from_gcs(BUCKET_NAME, "decision_engine/inputs/Indicator List.csv")
@@ -111,9 +112,6 @@ if 'analysis_completed' not in st.session_state:
     st.session_state.analysis_completed = False  
 
 #### List of Regions ####
-df_indicators = pd.read_csv("indicators_full_df.csv")
-df_indicatorlist = pd.read_csv("Indicator List.csv")
-df_projects = pd.read_csv("wbif_project_examples.csv")
 regions = df_indicators['NAME_2'].tolist()
 
 #### Create a DataFrame of National Averages ####
