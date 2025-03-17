@@ -20,8 +20,6 @@ openai.api_key = openai_api_key
 storage_client = storage.Client.from_service_account_info(gcs_credentials)
 
 # NOTE when running on Digital Ocean, we need to put the credentials somewhere and set the Env GOOGLE_APPLICATION_CREDENTIALS
-from google.cloud import storage
-import pandas as pd
 from io import BytesIO
 
 # Define bucket name
