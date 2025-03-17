@@ -10,7 +10,7 @@ from openai import OpenAI
 import json
 
 gcs_credentials = st.secrets["connections"]["gcs"]
-openai_api_key = st.secrets["api_keys"]["openai"]
+openai_api_key = st.secrets["api_keys"]["openai_apikey"]
 
 # Set OpenAI API Key
 openai.api_key = openai_api_key
