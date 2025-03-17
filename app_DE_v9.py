@@ -7,7 +7,6 @@ import pandas as pd
 
 from openai import OpenAI
 
-import apikey
 import json
 
 os.environ["OPENAI_API_KEY"] = apikey.openai_apikey
