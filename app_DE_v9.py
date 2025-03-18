@@ -410,7 +410,7 @@ if st.button("Let's get started"):
 # Display the initial analysis result if it exists in session state
 if st.session_state.get("relevant_indicators"):
     st.write(st.session_state.relevant_indicators)
-    copy_to_clipboard_button(st.session_state.relevant_indicators)
+    #copy_to_clipboard_button(st.session_state.relevant_indicators)
 
 
 # Second button only appears after the first analysis is complete
@@ -426,7 +426,7 @@ if st.session_state.analysis_completed:
 # Display regional analysis if it exists
 if st.session_state.get("regional_analysis_results"):
     st.write(st.session_state.regional_analysis_results)
-    copy_to_clipboard_button(st.session_state.regional_analysis_results)
+    #copy_to_clipboard_button(st.session_state.regional_analysis_results)
 
 
 if st.session_state.regional_analysis_completed == True:
@@ -439,7 +439,7 @@ if st.session_state.regional_analysis_completed == True:
 
 if st.session_state.get("project_recommendations"):
     #st.write(st.session_state.project_recommendations)
-    copy_to_clipboard_button(st.session_state.project_recommendations)
+    #copy_to_clipboard_button(st.session_state.project_recommendations)
     if st.button("New Analysis"):
         st.session_state.clear()
         st.rerun()
