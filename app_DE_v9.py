@@ -10,6 +10,26 @@ import openai
 from google.cloud import storage
 import json
 
+#Update Icon
+from PIL import Image
+# Loading Image using PIL
+import base64
+import requests
+
+def get_image_from_gcs(bucket_name, image_name):
+    """Fetch image from GCS and open it."""
+    bucket = storage_client.bucket(bucket_name)
+    blob = bucket.blob(image_name)
+    image_data = blob.download_as_bytes()
+    image = Image.open(BytesIO(image_data))
+    return image
+
+# Load the image
+im = get_image_from_gcs(BUCKET_NAME, "decision_engine/inputs/LDT Decision Engine Icon.png")
+
+# Set Streamlit page config
+st.set_page_config(page_title="LDT Decision Engine", page_icon=im)
+
 # Access secrets directly, no need for json.loads()
 gcs_credentials = st.secrets["gcs_service_account"]
 openai_api_key = st.secrets["api_keys"]["openai_apikey"]
@@ -42,26 +62,6 @@ def load_data():
     return df_indicators, df_indicatorlist, df_projects
 
 df_indicators, df_indicatorlist, df_projects = load_data()
-
-#Update Icon
-from PIL import Image
-# Loading Image using PIL
-import base64
-import requests
-
-def get_image_from_gcs(bucket_name, image_name):
-    """Fetch image from GCS and open it."""
-    bucket = storage_client.bucket(bucket_name)
-    blob = bucket.blob(image_name)
-    image_data = blob.download_as_bytes()
-    image = Image.open(BytesIO(image_data))
-    return image
-
-# Load the image
-im = get_image_from_gcs(BUCKET_NAME, "decision_engine/inputs/LDT Decision Engine Icon.png")
-
-# Set Streamlit page config
-st.set_page_config(page_title="LDT Decision Engine", page_icon=im)
 
 # Convert image to base64 - To be able to add to page
 def get_base64_from_image(image):
