@@ -24,12 +24,6 @@ def get_image_from_gcs(bucket_name, image_name):
     image = Image.open(BytesIO(image_data))
     return image
 
-# Load the image
-im = get_image_from_gcs(BUCKET_NAME, "decision_engine/inputs/LDT Decision Engine Icon.png")
-
-# Set Streamlit page config
-st.set_page_config(page_title="LDT Decision Engine", page_icon=im)
-
 # Access secrets directly, no need for json.loads()
 gcs_credentials = st.secrets["gcs_service_account"]
 openai_api_key = st.secrets["api_keys"]["openai_apikey"]
@@ -45,6 +39,12 @@ from io import BytesIO
 
 # Define bucket name
 BUCKET_NAME = "wb-ldt"
+
+# Load the image
+im = get_image_from_gcs(BUCKET_NAME, "decision_engine/inputs/LDT Decision Engine Icon.png")
+
+# Set Streamlit page config
+st.set_page_config(page_title="LDT Decision Engine", page_icon=im)
 
 def read_csv_from_gcs(bucket_name, file_name):
     """Reads a CSV file from GCS into a Pandas DataFrame."""
