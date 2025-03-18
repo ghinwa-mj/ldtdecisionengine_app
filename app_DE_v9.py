@@ -442,7 +442,7 @@ if st.session_state.get("project_recommendations"):
     copy_to_clipboard_button(st.session_state.project_recommendations)
     if st.button("Start Fresh"):
         st.session_state.clear()
-        st.experimental_rerun()
+        st.rerun()
 
 
 
