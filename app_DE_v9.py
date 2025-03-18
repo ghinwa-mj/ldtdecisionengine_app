@@ -440,7 +440,7 @@ if st.session_state.regional_analysis_completed == True:
 if st.session_state.get("project_recommendations"):
     #st.write(st.session_state.project_recommendations)
     copy_to_clipboard_button(st.session_state.project_recommendations)
-    if st.button("Start Fresh"):
+    if st.button("New Analysis"):
         st.session_state.clear()
         st.rerun()
 
