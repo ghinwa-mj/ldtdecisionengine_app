@@ -91,7 +91,7 @@ st.markdown(
             background: rgba(0, 0, 0, 0.8);
         }
     </style>
-    <div class="ai-powered">🤖Powered by OpenAI</div>
+    <div class="ai-powered">Powered by OpenAI</div>
     """,
     unsafe_allow_html=True
 )
