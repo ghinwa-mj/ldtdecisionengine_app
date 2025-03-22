@@ -74,6 +74,27 @@ icon_html = f'<img src="data:image/png;base64,{get_base64_from_image(im)}" width
 
 # Display title with icon
 st.markdown(f"<h1 style='display: flex; align-items: center;'>{icon_html}LDT Decision Engine</h1>", unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+        .ai-powered {
+            border: 2px solid #00FFFF;
+            color: #00FFFF;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+            box-shadow: 0 0 12px #00FFFF;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+    <div class="ai-powered">🤖Powered by OpenAI</div>
+    """,
+    unsafe_allow_html=True
+)
 # Subheader
 st.subheader("Hello, I am your LDT Decision Engine. I can do an automated analysis of regional performances based on the themes you're interested in.")
 
